@@ -1,0 +1,13 @@
+syntax: glob
+*.swp
+*.o
+es
+esdump
+y.output
+y.tab.c
+y.tab.h
+y.tab.o
+token.h
+initial.c
+sigmsgs.c
+
