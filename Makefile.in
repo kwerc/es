@@ -85,6 +85,8 @@ MANIFEST:
 install : es
 	$(MKDIR_P) $(bindir)
 	$(INSTALL) -s $(srcdir)/es $(bindir)
+	$(INSTALL) $(srcdir)/esdebug $(bindir)
+	chmod +x $(bindir)/esdebug
 	$(MKDIR_P) $(mandir)/man1
 	$(INSTALL) $(srcdir)/doc/es.1 $(mandir)/man1
 
