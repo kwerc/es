@@ -1,5 +1,9 @@
 # initial.es -- set up initial interpreter state ($Revision: 1.1.1.1 $)
 
+# this is the es-mveety version info. the format is $esversion-mveety-$rev
+
+mveetyrev = '1'
+version = '0.9.2-mveety-'^$mveetyrev
 
 #
 # Introduction
@@ -742,8 +746,7 @@ max-eval-depth	= 640
 #	is does.  fn-%dispatch is really only important to the current
 #	interpreter loop.
 
-noexport = noexport pid signals apid bqstatus fn-%dispatch path home
-
+noexport = noexport pid signals apid bqstatus fn-%dispatch path home version mveetyrev
 
 #
 # Title
