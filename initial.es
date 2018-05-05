@@ -385,7 +385,21 @@ fn-%or = $&noreturn @ first rest {
 #
 #		cmd &			%background {cmd}
 
-fn %background cmd {
+fn new-background cmd {
+	let (pid = <={$&background $cmd}) {
+		if {%is-interactive} {
+			cmds = `` (' ' '{' '}') (echo $cmd)
+			echo $cmds(1)^': '^$pid >[1=2]
+		}
+		apid = pid
+	}
+}
+
+# es 0.9.1 and earlier background. this would just print the pid
+# of the background process. most shells will print something in
+# the style of '$argv[0]: $cpid', so es does now too.
+
+fn old-background cmd {
 	let (pid = <={$&background $cmd}) {
 		if {%is-interactive} {
 			echo >[1=2] $pid
@@ -393,6 +407,9 @@ fn %background cmd {
 		apid = $pid
 	}
 }
+
+usebg = 'new'
+fn %background cmd { if {~ $usebg 'new' } { new-background $cmd } { old-background $cmd }}
 
 #	These redirections are rewritten:
 #
@@ -764,6 +781,7 @@ fn ver {
 #	interpreter loop.
 
 noexport = noexport pid signals apid bqstatus fn-%dispatch path home version mveetyrev primitives internals oldversion corelib
+noexport = $noexport fn-old-background fn-new-background 
 
 #
 # Title
