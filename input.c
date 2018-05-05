@@ -272,12 +272,6 @@ stdgetenv(name)
 	return (NULL);
 }
 
-char *
-getenv(char *name)
-{
-	return realgetenv(name);
-}
-
 extern void
 initgetenv(void)
 {
