@@ -717,7 +717,7 @@ set-max-eval-depth	= $&setmaxevaldepth
 #	or editline is being used), setting the variables $TERM or $TERMCAP
 #	should notify the line editor library.
 
-if {~ <=$&primitives restterminal} {
+if {~ <=$&primitives resetterminal} {
 	set-TERM	= @ { $&resetterminal; result $* }
 	set-TERMCAP	= @ { $&resetterminal; result $* }
 }
@@ -747,9 +747,9 @@ libraries = '/usr/local/lib/es/'
 
 fn ver {
 	echo $version^' (was '^$oldversion^')'
-	echo -n 'primitives = ' ; echo $primitives
-	echo -n 'system library = ' ; echo $corelib
-	echo -n 'user libraries = ' ; echo $libraries
+	echo 'primitives = '^$^primitives
+	echo 'system library = '^$^corelib
+	echo 'user libraries = '^$^libraries
 }
 
 #	noexport lists the variables that are not exported.  It is not
