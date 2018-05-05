@@ -300,7 +300,7 @@
 #endif
 
 #ifndef	GCINFO
-#define	GCINFO			0
+#define	GCINFO			1
 #endif
 
 #ifndef	GCPROTECT
@@ -308,7 +308,7 @@
 #endif
 
 #ifndef	GCVERBOSE
-#define	GCVERBOSE		0
+#define	GCVERBOSE		1
 #endif
 
 #ifndef	INITIAL_PATH

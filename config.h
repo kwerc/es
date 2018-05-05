@@ -143,3 +143,7 @@
 
 /* does sigsetjmp exist? */
 #define HAVE_SIGSETJMP 1
+
+/* use lisptrees */
+#define LISPTREES 1
+

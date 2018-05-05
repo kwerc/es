@@ -73,7 +73,7 @@ static void runesrc(void) {
 /* usage -- print usage message and die */
 static noreturn usage(void) {
 	eprint(
-		"usage: es [-c command] [-silevxnpo] [file [args ...]]\n"
+		"usage: es [-c command] [-silevxnpoIGL] [file [args ...]]\n"
 		"	-c cmd	execute argument\n"
 		"	-s	read commands from standard input; stop option parsing\n"
 		"	-i	interactive shell\n"
@@ -85,15 +85,9 @@ static noreturn usage(void) {
 		"	-p	don't load functions from the environment\n"
 		"	-o	don't open stdin, stdout, and stderr if they were closed\n"
 		"	-d	don't ignore SIGQUIT or SIGTERM\n"
-#if GCINFO
-		"	-I	print garbage collector information\n"
-#endif
-#if GCVERBOSE
-		"	-G	print verbose garbage collector information\n"
-#endif
-#if LISPTREES
-		"	-L	print parser results in LISP format\n"
-#endif
+		"	-I	print garbage collector information (if enabled)\n"
+		"	-G	print verbose garbage collector information (if enabled)\n"
+		"	-L	print parser results in LISP format (if enabled)\n"
 	);
 	exit(1);
 }

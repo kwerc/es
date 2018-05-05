@@ -439,7 +439,7 @@ static Boolean Bconv(Format *f) {
 		fmtprint(f, "(match %B %B)", n->u[0].p, n->u[1].p);
 		break;
 
-	case nMatch:
+	case nExtract:
 		fmtprint(f, "(extract %B %B)", n->u[0].p, n->u[1].p);
 		break;
 
