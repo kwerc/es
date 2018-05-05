@@ -10,4 +10,15 @@ y.tab.o
 token.h
 initial.c
 sigmsgs.c
-
+config.cache
+config.log
+config.h
+Makefile
+cscope.out
+tags
+TAGS
+core
+cs.out
+config.status
+ltmain.sh
+autom4te.cache
