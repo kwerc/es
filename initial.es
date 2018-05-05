@@ -735,6 +735,23 @@ ifs		= ' ' \t \n
 prompt		= '; ' ''
 max-eval-depth	= 640
 
+# final information variables
+# these variables are defined to make looking at internal data a
+# little bit easier
+
+primitives = <={ $&primitives }
+internals = <={ $&internals }
+oldversion = <={ $&version }
+corelib = '/usr/local/lib/es/'
+libraries = '/usr/local/lib/es/'
+
+fn ver {
+	echo $version^' (was '^$oldversion^')'
+	echo -n 'primitives = ' ; echo $primitives
+	echo -n 'system library = ' ; echo $corelib
+	echo -n 'user libraries = ' ; echo $libraries
+}
+
 #	noexport lists the variables that are not exported.  It is not
 #	exported, because none of the variables that it refers to are
 #	exported. (Obviously.)  apid is not exported because the apid value
@@ -746,7 +763,7 @@ max-eval-depth	= 640
 #	is does.  fn-%dispatch is really only important to the current
 #	interpreter loop.
 
-noexport = noexport pid signals apid bqstatus fn-%dispatch path home version mveetyrev
+noexport = noexport pid signals apid bqstatus fn-%dispatch path home version mveetyrev primitives internals oldversion corelib
 
 #
 # Title
