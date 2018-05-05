@@ -351,6 +351,11 @@
 #define	USE_SIG_ATOMIC_T	0
 #endif
 
+/* use lisptrees */
+#ifndef LISPTREES
+#define LISPTREES 1
+#endif
+
 /*
  * enforcing choices that must be made
  */
