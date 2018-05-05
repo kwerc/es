@@ -759,14 +759,24 @@ max-eval-depth	= 640
 primitives = <={ $&primitives }
 internals = <={ $&internals }
 oldversion = <={ $&version }
-corelib = '/usr/local/lib/es/'
-libraries = '/usr/local/lib/es/'
+corelib = '/usr/local/share/es/'
+libraries = ()
 
 fn ver {
 	echo $version^' (was '^$oldversion^')'
 	echo 'primitives = '^$^primitives
 	echo 'system library = '^$^corelib
 	echo 'user libraries = '^$^libraries
+}
+
+# es-mveety extended library
+
+fn panic lib rest {
+	echo $lib^': '^$rest
+	if {! %is-interactive} {
+		exit 1
+	}
+	return 1
 }
 
 #	noexport lists the variables that are not exported.  It is not
@@ -781,7 +791,8 @@ fn ver {
 #	interpreter loop.
 
 noexport = noexport pid signals apid bqstatus fn-%dispatch path home version mveetyrev primitives internals oldversion corelib
-noexport = $noexport fn-old-background fn-new-background 
+noexport = $noexport fn-old-background fn-new-background
+noexport = $noexport panic
 
 #
 # Title
