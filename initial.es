@@ -753,6 +753,7 @@ home		= /
 ifs		= ' ' \t \n
 prompt		= '; ' ''
 max-eval-depth	= 640
+noexport = noexport
 
 # es-mveety extended library
 

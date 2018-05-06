@@ -33,7 +33,6 @@ fn import-user-lib lib {
 		let (libname = <={access -n $lib -1 -r $libraries}){
 			if {~ $#libname 0} { throw error }
 			. $libname
-			return 0
 		}
 	}
 }
@@ -43,9 +42,9 @@ fn import lib {
 		panic 'import' 'import is not enabled'
 		return 1
 	}
-	if {! ~ <={import-user-lib $lib} 0} {
+	if {~ <={import-user-lib $lib} 0} {
 		dprint 'no userlib named '^$lib
-		if {! ~ <={import-core-lib $lib} 0} {
+		if {~ <={import-core-lib $lib} 0} {
 			panic 'import' $lib^' not found'
 			return 1
 		}

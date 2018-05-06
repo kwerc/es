@@ -13,21 +13,11 @@
 #	is does.  fn-%dispatch is really only important to the current
 #	interpreter loop.
 
-noexport = noexport pid signals apid bqstatus fn-%dispatch path home version mveetyrev primitives internals oldversion corelib
-noexport = $noexport fn-old-background fn-new-background
+noexport = $noexport pid signals apid bqstatus fn-%dispatch path home
+noexport = $noexport version mveetyrev options
+noexport = $noexport corelib fn-old-background fn-new-background
 noexport = $noexport panic dprint
 noexport = $noexport enable-import import-core-lib import-user-lib import
-
-primitives = <={ $&primitives }
-internals = <={ $&internals }
-oldversion = <={ $&version }
-
-fn ver {
-	echo $version^' (was '^$oldversion^')'
-	echo 'primitives = '^$^primitives
-	echo 'system library = '^$^corelib
-	echo 'user libraries = '^$^libraries
-}
 
 #
 # Title
