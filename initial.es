@@ -1,4 +1,6 @@
-# initial.es -- set up initial interpreter state ($Revision: 1.1.1.1 $)
+#!/usr/local/bin/es
+# initial.es -- set up initial interpreter state
+options = 'init'
 
 # this is the es-mveety version info. the format is $esversion-mveety-$rev
 
@@ -779,27 +781,11 @@ fn panic lib rest {
 	return 1
 }
 
-#	noexport lists the variables that are not exported.  It is not
-#	exported, because none of the variables that it refers to are
-#	exported. (Obviously.)  apid is not exported because the apid value
-#	is for the parent process.  pid is not exported so that even if it
-#	is set explicitly, the one for a child shell will be correct.
-#	Signals are not exported, but are inherited, so $signals will be
-#	initialized properly in child shells.  bqstatus is not exported
-#	because it's almost certainly unrelated to what a child process
-#	is does.  fn-%dispatch is really only important to the current
-#	interpreter loop.
-
-noexport = noexport pid signals apid bqstatus fn-%dispatch path home version mveetyrev primitives internals oldversion corelib
-noexport = $noexport fn-old-background fn-new-background
-noexport = $noexport panic
-
-#
-# Title
-#
-
-#	This is silly and useless, but whatever value is returned here
-#	is printed in the header comment in initial.c;  nobody really
-#	wants to look at initial.c anyway.
-
-result es initial state built in `/bin/pwd on `/bin/date for <=$&version
+fn dprint msg {
+	if {~ $#debugging 0} {
+		return 0
+	} {
+		echo 'debug: '^$msg
+		return 0
+	}
+}

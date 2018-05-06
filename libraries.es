@@ -1,18 +1,10 @@
 #!/usr/local/bin/es
+options = $options libs
 
 # es library search path support. This will allow users to share
 # libraries globally on a system.
 
 enable-import = 'yes'
-
-fn dprint msg {
-	if {~ $#debugging 0} {
-		return 0
-	} {
-		echo 'debug: '^$msg
-		return 0
-	}
-}
 
 fn import-core-lib lib {
 	dprint 'import-core-lib exec''d'
