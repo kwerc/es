@@ -4,6 +4,8 @@ options = $options libs
 # es library search path support. This will allow users to share
 # libraries globally on a system.
 
+corelib = '/usr/local/share/es/'
+libraries = ()
 enable-import = 'yes'
 
 fn import-core-lib lib {

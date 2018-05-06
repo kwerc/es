@@ -754,23 +754,6 @@ ifs		= ' ' \t \n
 prompt		= '; ' ''
 max-eval-depth	= 640
 
-# final information variables
-# these variables are defined to make looking at internal data a
-# little bit easier
-
-primitives = <={ $&primitives }
-internals = <={ $&internals }
-oldversion = <={ $&version }
-corelib = '/usr/local/share/es/'
-libraries = ()
-
-fn ver {
-	echo $version^' (was '^$oldversion^')'
-	echo 'primitives = '^$^primitives
-	echo 'system library = '^$^corelib
-	echo 'user libraries = '^$^libraries
-}
-
 # es-mveety extended library
 
 fn panic lib rest {
