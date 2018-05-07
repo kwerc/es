@@ -10,13 +10,17 @@ fn dirs {
 }
 
 fn pushd dir {
-	let(cwd = `{pwd} ; okay = <={access -x -1 $dir}) {
-		if {! ~ $#okay 0} {
-			dirstack = $cwd $dirstack
-			cd $dir
-		} {
-			echo 'pushd: could not access directory '^$dir
+	if {! ~ $#dir 0} {
+		let(cwd = `{pwd} ; okay = <={access -x -1 $dir}) {
+			if {! ~ $#okay 0} {
+				dirstack = $cwd $dirstack
+				cd $dir
+			} {
+				echo 'pushd: could not access directory '^$dir
+			}
 		}
+	} {
+		echo 'usage: pushd [dir]'
 	}
 }
 
