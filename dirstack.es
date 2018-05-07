@@ -4,13 +4,19 @@ options = $options dirstack
 dirstack = ()
 
 fn dirs {
-	echo $dirstack
+	if {! ~ $#dirstack 0 } {
+		echo $dirstack
+	}
 }
 
 fn pushd dir {
-	let(cwd = `{pwd}) {
-		dirstack = $cwd $dirstack
-		cd $dir
+	let(cwd = `{pwd} ; okay = <={access -x -1 $dir}) {
+		if {! ~ $#okay 0} {
+			dirstack = $cwd $dirstack
+			cd $dir
+		} {
+			echo 'pushd: could not access directory '^$dir
+		}
 	}
 }
 
